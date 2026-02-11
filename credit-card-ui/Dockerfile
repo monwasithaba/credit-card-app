@@ -1,15 +1,12 @@
-# Use Node.js base
-FROM node:20-alpine
+FROM node:18-alpine
 
 WORKDIR /app
-
-RUN npm install -g serve
 
 COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npm run build
 
-EXPOSE 3000
-CMD ["serve", "-s", "dist", "-l", "3000"]
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
