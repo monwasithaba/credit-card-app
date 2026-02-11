@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send("✅ API is running! To use the app, open the UI at http://localhost:5173");
+    res.send("✅ API is running! Use /validate/:cardNumber to check a card number.");
 });
 
 
