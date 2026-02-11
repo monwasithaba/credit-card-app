@@ -2,13 +2,9 @@ version: "3.8"
 
 services:
   api:
-    build:
-      context: ./credit-card-api
-      dockerfile: Dockerfile
+    image: msithaba/credit-card-api:latest
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=production
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 10s
@@ -17,14 +13,7 @@ services:
       start_period: 5s
 
   ui:
-    build:
-      context: ./credit-card-ui
-      dockerfile: Dockerfile
-      args:
-        - VITE_API_URL=http://localhost:3000
+    image: msithaba/credit-card-ui:latest
     ports:
-      - "80:80"
+      - "8080:80"
 
-networks:
-  default:
-    name: credit-card-network
