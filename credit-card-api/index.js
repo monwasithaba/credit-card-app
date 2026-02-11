@@ -27,6 +27,10 @@ app.get('/validate/:cardNumber', (req, res) => {
     });
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.listen(PORT, () => {
     console.log(`✅ API is live! Test it here: http://localhost:${PORT}`);
 });
