@@ -64,7 +64,6 @@ jobs:
 
       - name: deploy using docker
         run: |
-          cd credit-card-app
           docker compose up -d 
           docker image prune -f
           docker container prune -f
