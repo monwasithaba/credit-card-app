@@ -13,7 +13,7 @@ validateBtn.addEventListener('click', async () => {
   }
 
   try {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const apiUrl = 'http://16.170.220.220/:3000';
     const response = await fetch(`${apiUrl}/validate/${cardNumber}`);
     const data = await response.json();
 

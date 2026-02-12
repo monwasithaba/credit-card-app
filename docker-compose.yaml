@@ -15,5 +15,4 @@ services:
   ui:
     image: msithaba/credit-card-ui:latest
     ports:
-      - "8080:80"
-
+      - "80:8080"
