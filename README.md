@@ -12,7 +12,7 @@ This repository contains the source code for the Credit Card Validator Applicati
 
 If you need to run the services individually for development purposes:
 
-### API
+### CREDIT CARD VALIDATOR API
 
 1.  Navigate to the API directory:
 
@@ -26,31 +26,34 @@ If you need to run the services individually for development purposes:
 
     npm start
 
-### UI
+### CREDIT CARD VALIDATOR UI
 
 1.  Navigate to the UI directory:
 
     cd credit-card-ui
+
+2.  Update the enviromental variable in .env file:
+
+    VITE_API_URL=http://localhost:3000/
   
-2.  Install dependencies:
+3.  Install dependencies:
    
     npm install
 
-3. Run tests:
+4. Run tests:
    
     npm run test
 
-3. Compile application:
+5. Compile application:
    
     npm run build
     
-3.  Start the development server:
+6.  Start the development server:
    
     npm run start
     
 
-## Deploy Application Remot (Docker Compose)
-
+## Deploy ApplicatioN using Docker Compose
 The easiest way to run the application is using Docker Compose.
 
 1.  **Start the services:**
@@ -62,9 +65,10 @@ The easiest way to run the application is using Docker Compose.
     docker-compose down
 
 
-3.  **Access the application:**
-    - **UI:** http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:8080/
-    - **API:**http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:3000/validate/49927398716
+3.  Access the application
+
+    CREDIT CARD VALIDATOR UI:   http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:8080/
+    CREDIT CARD VALIDATOR API:  http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:3000/validate/49927398716
 
 
 

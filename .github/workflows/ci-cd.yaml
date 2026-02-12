@@ -32,11 +32,22 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and Push API Image
-        run: |
-          cd credit-card-api
-          docker build -t msithaba/credit-card-api:latest .
-          docker push msithaba/credit-card-api:latest
+      - name: Build API Image
+        working-directory: ./credit-card-api
+        run: docker build -t msithaba/credit-card-api:latest .
+
+      - name: Scan API Image for Vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "msithaba/credit-card-api:latest"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+      - name: Push API Image
+        run: docker push msithaba/credit-card-api:latest
 
       - name: Install UI Dependencies
         working-directory: ./credit-card-ui
@@ -48,11 +59,22 @@ jobs:
         env:
           VITE_API_URL: ${{ secrets.API_URL }}
 
-      - name: Build and Push UI Image
-        run: |
-          cd credit-card-ui
-          docker build -t msithaba/credit-card-ui:latest .
-          docker push msithaba/credit-card-ui:latest
+      - name: Build UI Image
+        working-directory: ./credit-card-ui
+        run: docker build -t msithaba/credit-card-ui:latest .
+
+      - name: Scan UI Image for Vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "msithaba/credit-card-ui:latest"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+      - name: Push UI Image
+        run: docker push msithaba/credit-card-ui:latest
 
   deploy:
     needs: build-and-test
@@ -64,7 +86,6 @@ jobs:
 
       - name: deploy using docker compose
         run: |
-          cd credit-card-app
           docker compose up -d 
           docker image prune -f
           docker container prune -f
