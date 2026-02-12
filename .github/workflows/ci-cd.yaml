@@ -46,6 +46,8 @@ jobs:
       - name: Build UI
         working-directory: ./credit-card-ui
         run: npm run build 
+        env:
+          VITE_API_URL: ${{ secrets.API_URL }}
 
       - name: Build and Push UI Image
         run: |
@@ -53,33 +55,33 @@ jobs:
           docker build -t msithaba/credit-card-ui:latest .
           docker push msithaba/credit-card-ui:latest
 
-  deploy:
-    needs: build-and-test
-    if: github.ref == 'refs/heads/main'
-    runs-on: [self-hosted, linux, x64, credit-card]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # deploy:
+  #   needs: build-and-test
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: [self-hosted, linux, x64, credit-card]
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      # Copy docker-compose.yaml to EC2
-      - name: Copy files to EC2
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "docker-compose.yaml"
-          target: "~/app"
+  #     # Copy docker-compose.yaml to EC2
+  #     - name: Copy files to EC2
+  #       uses: appleboy/scp-action@v0.1.7
+  #       with:
+  #         host: ${{ secrets.EC2_HOST }}
+  #         username: ${{ secrets.EC2_USER }}
+  #         key: ${{ secrets.EC2_SSH_KEY }}
+  #         source: "docker-compose.yaml"
+  #         target: "~/app"
 
-      # SSH into EC2 and restart services
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ~/app
-            # Restart containers with new images
-            docker-compose up -d --remove-orphans
-            docker image prune -f
+  #     # SSH into EC2 and restart services
+  #     - name: Deploy to EC2
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.EC2_HOST }}
+  #         username: ${{ secrets.EC2_USER }}
+  #         key: ${{ secrets.EC2_SSH_KEY }}
+  #         script: |
+  #           cd ~/app
+  #           # Restart containers with new images
+  #           docker-compose up -d --remove-orphans
+  #           docker image prune -f

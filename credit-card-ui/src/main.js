@@ -1,4 +1,5 @@
 import './style.css'
+import axios from 'axios';
 
 const validateBtn = document.querySelector('#validateBtn');
 const cardInput = document.querySelector('#cardInput');
@@ -13,9 +14,9 @@ validateBtn.addEventListener('click', async () => {
   }
 
   try {
-    const apiUrl = 'http://16.170.220.220/:3000';
-    const response = await fetch(`${apiUrl}/validate/${cardNumber}`);
-    const data = await response.json();
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const response = await axios.get(`${apiUrl}/validate/${cardNumber}`);
+    const data = response.data;
 
     message.innerText = data.message;
     message.style.color = data.valid ? "#2ecc71" : "#e74c3c";
