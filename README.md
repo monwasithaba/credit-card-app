@@ -70,5 +70,14 @@ The easiest way to run the application is using Docker Compose.
     CREDIT CARD VALIDATOR UI:   http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:8080/
     CREDIT CARD VALIDATOR API:  http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:3000/validate/49927398716
 
+4. Monitor containers
+
+    UPTIME KUMA: http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:3001/
+
+5. Application Health using Postman
+
+   CREDIT CARD VALIDATOR API: http://16.170.220.220:3000/health
+
+
 
 
