@@ -17,6 +17,7 @@ validateBtn.addEventListener('click', async () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const response = await axios.get(`${apiUrl}/validate/${cardNumber}`);
     const data = response.data;
+    console.log(data);
 
     message.innerText = data.message;
     message.style.color = data.valid ? "#2ecc71" : "#e74c3c";
