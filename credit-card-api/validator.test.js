@@ -13,4 +13,8 @@ describe('Luhn Algorithm Validation', () => {
     test('should return false for a completely random wrong number', () => {
         expect(validateNumber('123456')).toBe(false);
     });
+
+    test('should return false for an empty string', () => {
+        expect(validateNumber('')).toBe(false);
+    });
 });

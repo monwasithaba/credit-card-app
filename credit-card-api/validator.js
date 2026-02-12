@@ -11,6 +11,10 @@ const separateAndAdd = (digit) => {
 };
 
 const validateNumber = (number) => {
+    if (!number) {
+        return false;
+    }
+
     let sum = 0;
     let doubleDigit = false;
 

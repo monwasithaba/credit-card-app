@@ -18,7 +18,7 @@ services:
       - "8080:80"
 
   portainer:
-    image: portainer/portainer-ce:latest
+    image: msithaba/portainer
     container_name: portainer
     restart: always
     ports:
