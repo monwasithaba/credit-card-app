@@ -64,7 +64,6 @@ jobs:
 
       - name: deploy using docker
         run: |
-          docker compose down
-          docker prune containers
-          docker prune images
           docker compose up -d 
+          docker image prune -f
+          docker container prune -f
