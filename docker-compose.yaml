@@ -16,3 +16,13 @@ services:
     image: msithaba/credit-card-ui:latest
     ports:
       - "8080:80"
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
