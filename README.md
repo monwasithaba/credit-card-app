@@ -12,7 +12,7 @@ This repository contains the source code for the Credit Card Validator Applicati
 
 If you need to run the services individually for development purposes:
 
-### CREDIT CARD VALIDATOR API
+## CREDIT CARD VALIDATOR API
 
 1.  Navigate to the API directory:
 
@@ -26,7 +26,7 @@ If you need to run the services individually for development purposes:
 
     npm start
 
-### CREDIT CARD VALIDATOR UI
+## CREDIT CARD VALIDATOR UI
 
 1.  Navigate to the UI directory:
 
@@ -53,7 +53,7 @@ If you need to run the services individually for development purposes:
     npm run start
     
 
-## Deploy ApplicatioN using Docker Compose
+## Deploy Application using Docker Compose
 The easiest way to run the application is using Docker Compose.
 
 1.  **Start the services:**
@@ -76,9 +76,13 @@ The easiest way to run the application is using Docker Compose.
     PORTAINER: http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:9443/
 
 
-5. Application Health using Postman
+5. Test Application Health using Postman
 
    CREDIT CARD VALIDATOR API: http://16.170.220.220:3000/health
+
+## AWS Service
+
+I used the freee tier aws t3.micro ec2 as a deployment environemnt as well as our GitHub self-hosted runner.
 
 
 
