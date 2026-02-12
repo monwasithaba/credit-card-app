@@ -73,6 +73,8 @@ The easiest way to run the application is using Docker Compose.
 4. Monitor containers
 
     UPTIME KUMA: http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:3001/
+    PORTAINER: http://ec2-16-170-220-220.eu-north-1.compute.amazonaws.com:9443/
+
 
 5. Application Health using Postman
 
