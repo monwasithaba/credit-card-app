@@ -25,7 +25,7 @@ services:
       - "8000:8000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - /home/ubuntu/volumes/portainer_data:/data
 
   
   uptime-kuma:
@@ -35,7 +35,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - uptime_kuma_data:/app/data
+      - /home/ubuntu/volumes/uptime_kuma_data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 volumes:
