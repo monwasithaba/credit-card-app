@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: runs-on: [self-hosted, linux, x64, credit-card]
+    runs-on: [self-hosted, linux, x64, credit-card]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
